@@ -1,3 +1,4 @@
+import { Link, NavLink } from 'react-router-dom';
 import logo from '../../assets/logo-2.png'
 
 const NavBar = () => {
@@ -5,8 +6,8 @@ const NavBar = () => {
     <div className=' '>
       <nav className="bg-white border-gray-200 dark:bg-transparent">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-          <a
-            href="https://flowbite.com/"
+          <Link
+            to='/'
             className="flex items-center space-x-3 rtl:space-x-reverse"
           >
             <img
@@ -14,7 +15,7 @@ const NavBar = () => {
               className="h-"
               alt="Flowbite Logo"
             />
-          </a>
+          </Link>
 
           <div className="hidden md:block">
             <div className="relative">
@@ -102,37 +103,40 @@ const NavBar = () => {
           >
             <ul className="flex flex-col p-4 md:p-0 mt-4 text-base  rounded-lg bg-transparent md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-transparent md:dark:bg-transparent ">
               <li>
-                <a
-                  href="#"
-                  className="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500"
+                <NavLink
+                  to='/news'
+                  className="block py-2 px-3 text-white  rounded md:bg-transparent - md:p-0 "
                   aria-current="page"
                 >
                   News
-                </a>
+                </NavLink>
               </li>
               <li>
-                <a
-                  href="#"
-                  className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+              <NavLink
+                  to='/destination'
+                  className="block py-2 px-3 text-white  rounded md:bg-transparent  md:p-0 "
+                  aria-current="page"
                 >
                   Destination
-                </a>
+                </NavLink>
               </li>
               <li>
-                <a
-                  href="#"
-                  className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+              <NavLink
+                  to='/blog'
+                  className="block py-2 px-3 text-white  rounded md:bg-transparent  md:p-0 "
+                  aria-current="page"
                 >
                   Blog
-                </a>
+                </NavLink>
               </li>
               <li>
-                <a
-                  href="#"
-                  className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+              <NavLink
+                  to='/contact'
+                  className="block py-2 px-3 text-white  rounded md:bg-transparent  md:p-0 "
+                  aria-current="page"
                 >
                   Contact
-                </a>
+                </NavLink>
               </li>
             </ul>
             <div className='ml-20'>

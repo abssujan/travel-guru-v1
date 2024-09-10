@@ -13,6 +13,11 @@ export default {
       },
       backgroundImage: {
         'hero-pattern': "url('./src/assets/bg-cover.png')",
+        'bg-blog': "url('./src/assets/bg-blog.jpg')",
+        'bg-sajek': "url('./src/assets/sajekvallyfog.jpg')",
+        'bg-news-river': "url('./src/assets/bg-news-river.jpg')",
+        'bg-destination': "url('./src/assets/bg-destination.jpg')",
+        'bg-old-city': "url('./src/assets/bg-old-city.jpg')",
       }
     },
   },
