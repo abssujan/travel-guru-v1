@@ -138,11 +138,22 @@ const NavBar = () => {
                   Contact
                 </NavLink>
               </li>
+              <li>
+              <NavLink
+                  to='/register'
+                  className="block py-2 px-3 text-white  rounded md:bg-transparent  md:p-0 "
+                  aria-current="page"
+                >
+                  Register
+                </NavLink>
+              </li>
             </ul>
             <div className='ml-20'>
+                <Link to='/login'>
                 <button className='bg-[#F9A51A] font-medium px-6 py-2 rounded-md'>
                     Login
                 </button>
+                </Link>
             </div>
           </div>
           

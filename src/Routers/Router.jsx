@@ -5,6 +5,8 @@ import News from "../pages/News/News";
 import Destination from "../pages/Destination/Destination";
 import Blog from "../pages/Blog/Blog";
 import Contact from "../pages/Contact/Contact";
+import Login from "../pages/Login/Login";
+import Register from "../pages/Register/Register";
 
 const router = createBrowserRouter([
     {
@@ -30,6 +32,14 @@ const router = createBrowserRouter([
             {
                 path: '/contact',  // Contact route at root level
                 element: <Contact></Contact>,
+            },
+            {
+                path: '/login',
+                element: <Login></Login>
+            },
+            {
+                path: '/register',
+                element: <Register></Register>
             }
         ]
     }
