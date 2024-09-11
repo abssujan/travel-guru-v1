@@ -14,7 +14,7 @@ const NavBar = () => {
 
   return (
     <div className=' '>
-      <nav className="bg-white border-gray-200 dark:bg-transparent">
+      <nav className="bg-transparent border-gray-200 dark:bg-transparent">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           <Link
             to='/'
@@ -111,7 +111,7 @@ const NavBar = () => {
             className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
             id="navbar-search"
           >
-            <ul className="flex flex-col p-4 md:p-0 mt-4 text-base  rounded-lg bg-transparent md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-transparent md:dark:bg-transparent ">
+            <ul className="flex flex-col p-4 md:p-0 mt-4 text-base  rounded-lg bg-transparent md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 dark:bg-transparent  ">
             <li>
               <NavLink
                   to='/destination'

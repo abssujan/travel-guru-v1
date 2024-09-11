@@ -15,7 +15,7 @@ const Login = () => {
         />
         <span className="text-center">Continue with Facebook</span>
       </button>
-      <button className="bg-transparent text-black py-3 px-6 rounded w-full flex items-center justify-center mt-4 border hover:bg-[#F9A51A] transition-all delay-75 ease-linear hover:text-white">
+      <button onClick={handleGoogleSignIn} className="bg-transparent text-black py-3 px-6 rounded w-full flex items-center justify-center mt-4 border hover:bg-[#F9A51A] transition-all delay-75 ease-linear hover:text-white">
         <FontAwesomeIcon
           icon={faGoogle}
           className="mr-2  text-inherit"
@@ -25,7 +25,7 @@ const Login = () => {
     </Fragment>
   );
   
-   const { SignIn} = useContext(AuthContext);
+   const { SignIn , googleSignIn} = useContext(AuthContext);
    const location = useLocation();
    console.log(location)
    const navigate = useNavigate();
@@ -40,6 +40,13 @@ const Login = () => {
     .then(result => {
         console.log(result.user)
        navigate(location?.state? location.state : '/')
+    })
+    .catch(error => console.log(error))
+  }
+  const handleGoogleSignIn = () => {
+    googleSignIn()
+    .then(result => {
+      console.log(result.user)
     })
     .catch(error => console.log(error))
   }
