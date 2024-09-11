@@ -1,8 +1,10 @@
 import NavBar from "../NavBar/NavBar";
+import bgDestination from '../../assets/bg-destination.jpg'
 
 const Destination = () => {
   return (
-    <div className=" bg-bg-destination h-screen">
+    <div style={{ backgroundImage: `url(${bgDestination})` }}
+    className=" bg-bg-destination h-screen">
       <NavBar></NavBar>
       <div className=" xl:w-[1400px] mx-auto mt-10 ">
         
