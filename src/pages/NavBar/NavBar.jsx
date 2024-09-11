@@ -174,20 +174,21 @@ const NavBar = () => {
                 }
             </div>
 
-            <div className="ml-2">
-                {
-                  user? 
+            <div className="ml-10">
+                {user?.photoURL ? (
                   <div className="flex items-center space-x-2">
                     <img
-                     className="w-10 h-10 rounded-full object-cover "
-                     src={avatar}
-                      alt="Rounded avatar"
-                  />
-                    <p>{user.displayName}</p>
+                      className="w-10 h-10 rounded-full object-cover"
+                      src={user.photoURL || {avatar}}
+                      alt="User avatar"
+                    />
+                    <p>{user.displayName || "User"}</p>
                   </div>
-                  :
-                  <p></p>
-                }
+                ) : (
+                  <div className="">
+                    
+                  </div>
+                )}
               </div>
           </div>
           

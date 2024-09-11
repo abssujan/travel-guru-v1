@@ -2,15 +2,13 @@ import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
-import avatar from '../../assets/avatar.jpg'
+import avatar from "../../assets/avatar.jpg";
 
 const NavBarBlack = () => {
-    const {user, logOut} = useContext(AuthContext);
-    const handleSignOut = () => {
-     logOut()
-     .then()
-     .catch()
-    }
+  const { user, logOut } = useContext(AuthContext);
+  const handleSignOut = () => {
+    logOut().then().catch();
+  };
   return (
     <div>
       <div className=" ">
@@ -155,34 +153,34 @@ const NavBarBlack = () => {
                 </li>
               </ul>
               <div className="ml-20">
-                {
-                   user? 
-                   <button onClick={handleSignOut} className="bg-[#F9A51A] font-medium px-6 py-2 rounded-md">
+                {user ? (
+                  <button
+                    onClick={handleSignOut}
+                    className="bg-[#F9A51A] font-medium px-6 py-2 rounded-md"
+                  >
                     Sign Out
                   </button>
-                  :
+                ) : (
                   <Link to="/login">
-                  <button className="bg-[#F9A51A] font-medium px-6 py-2 rounded-md">
-                    Login
-                  </button>
-                </Link>
-                }
-                
+                    <button className="bg-[#F9A51A] font-medium px-6 py-2 rounded-md">
+                      Login
+                    </button>
+                  </Link>
+                )}
               </div>
               <div className="ml-10">
-                {
-                  user? 
+                {user?.photoURL ? (
                   <div className="flex items-center space-x-2">
                     <img
-                     className="w-10 h-10 rounded-full object-cover "
-                     src={avatar}
-                      alt="Rounded avatar"
-                  />
-                    <p>{user.displayName}</p>
+                      className="w-10 h-10 rounded-full object-cover"
+                      src={user.photoURL || { avatar }}
+                      alt="User avatar"
+                    />
+                    <p>{user.displayName || "User"}</p>
                   </div>
-                  :
-                  <p></p>
-                }
+                ) : (
+                  <div className=""></div>
+                )}
               </div>
             </div>
           </div>

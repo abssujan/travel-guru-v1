@@ -7,20 +7,8 @@ import { AuthContext } from "../../provider/AuthProvider";
 import { updateProfile } from "firebase/auth";
 
 const Register = () => {
-  const SocialLoginButton = () => (
-    <Fragment>
-      <button className="bg-transparent text-black hover:text-white py-3 px-6 rounded w-full flex items-center justify-center mt-4 border hover:bg-[#F9A51A] transition-all delay-75 ease-linear">
-        <FontAwesomeIcon icon={faFacebook} className=" mr-2 text-inherit" />
-        <span className="text-center">Continue with Facebook</span>
-      </button>
-      <button className="bg-transparent text-black py-3 px-6 rounded w-full flex items-center justify-center mt-4 border hover:bg-[#F9A51A] transition-all delay-75 ease-linear hover:text-white">
-        <FontAwesomeIcon icon={faGoogle} className="mr-2  text-inherit" />
-        <span className="text-center">Continue with Google</span>
-      </button>
-    </Fragment>
-  );
-  
-  const {user, createUser} = useContext(AuthContext);
+
+  const {createUser, googleSignIn} = useContext(AuthContext);
 
   const handleRegisterData = e => {
     e.preventDefault()
@@ -46,6 +34,25 @@ const Register = () => {
     .catch(error => console.log(error))
 
   }
+  const handleGoogleSignIn = () => {
+    googleSignIn()
+    .then(result => {
+      console.log(result.user)
+    })
+    .catch(error => console.log(error))
+  }
+  const SocialLoginButton = () => (
+    <Fragment>
+      <button className="bg-transparent text-black hover:text-white py-3 px-6 rounded w-full flex items-center justify-center mt-4 border hover:bg-[#F9A51A] transition-all delay-75 ease-linear">
+        <FontAwesomeIcon icon={faFacebook} className=" mr-2 text-inherit" />
+        <span className="text-center">Continue with Facebook</span>
+      </button>
+      <button onClick={handleGoogleSignIn} className="bg-transparent text-black py-3 px-6 rounded w-full flex items-center justify-center mt-4 border hover:bg-[#F9A51A] transition-all delay-75 ease-linear hover:text-white">
+        <FontAwesomeIcon icon={faGoogle} className="mr-2  text-inherit" />
+        <span className="text-center">Continue with Google</span>
+      </button>
+    </Fragment>
+  );
   return (
     <div>
       <NavBarBlack></NavBarBlack>
