@@ -2,6 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
+import avatar from '../../assets/avatar.jpg'
 
 const NavBarBlack = () => {
     const {user, logOut} = useContext(AuthContext);
@@ -167,6 +168,21 @@ const NavBarBlack = () => {
                 </Link>
                 }
                 
+              </div>
+              <div className="ml-10">
+                {
+                  user? 
+                  <div className="flex items-center space-x-2">
+                    <img
+                     className="w-10 h-10 rounded-full object-cover "
+                     src={avatar}
+                      alt="Rounded avatar"
+                  />
+                    <p>{user.displayName}</p>
+                  </div>
+                  :
+                  <p></p>
+                }
               </div>
             </div>
           </div>

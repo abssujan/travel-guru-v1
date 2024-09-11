@@ -7,6 +7,7 @@ import Blog from "../pages/Blog/Blog";
 import Contact from "../pages/Contact/Contact";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -23,7 +24,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/destination',  // Destination route at root level
-                element: <Destination></Destination>,
+                element:<PrivateRoute> <Destination></Destination></PrivateRoute>,
             },
             {
                 path: '/blog',  // Blog route at root level

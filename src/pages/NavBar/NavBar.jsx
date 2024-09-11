@@ -1,7 +1,17 @@
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../../assets/logo-2.png'
+import { useContext } from 'react';
+import { AuthContext } from '../../provider/AuthProvider';
+import avatar from '../../assets/avatar.jpg';
 
 const NavBar = () => {
+  const {user, logOut} = useContext(AuthContext);
+  const handleSignOut = () => {
+    logOut()
+    .then()
+    .catch()
+   }
+
   return (
     <div className=' '>
       <nav className="bg-white border-gray-200 dark:bg-transparent">
@@ -12,7 +22,7 @@ const NavBar = () => {
           >
             <img
               src={logo}
-              className="h-"
+              className="w-24"
               alt="Flowbite Logo"
             />
           </Link>
@@ -102,6 +112,15 @@ const NavBar = () => {
             id="navbar-search"
           >
             <ul className="flex flex-col p-4 md:p-0 mt-4 text-base  rounded-lg bg-transparent md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-transparent md:dark:bg-transparent ">
+            <li>
+              <NavLink
+                  to='/destination'
+                  className="block py-2 px-3 text-white  rounded md:bg-transparent  md:p-0 "
+                  aria-current="page"
+                >
+                  Destination
+                </NavLink>
+              </li>
               <li>
                 <NavLink
                   to='/news'
@@ -111,15 +130,7 @@ const NavBar = () => {
                   News
                 </NavLink>
               </li>
-              <li>
-              <NavLink
-                  to='/destination'
-                  className="block py-2 px-3 text-white  rounded md:bg-transparent  md:p-0 "
-                  aria-current="page"
-                >
-                  Destination
-                </NavLink>
-              </li>
+            
               <li>
               <NavLink
                   to='/blog'
@@ -149,12 +160,35 @@ const NavBar = () => {
               </li>
             </ul>
             <div className='ml-20'>
-                <Link to='/login'>
-                <button className='bg-[#F9A51A] font-medium px-6 py-2 rounded-md'>
+                 {
+                   user? 
+                   <button onClick={handleSignOut} className="bg-[#F9A51A] font-medium px-6 py-2 rounded-md">
+                    Sign Out
+                  </button>
+                  :
+                  <Link to="/login">
+                  <button className="bg-[#F9A51A] font-medium px-6 py-2 rounded-md">
                     Login
-                </button>
+                  </button>
                 </Link>
+                }
             </div>
+
+            <div className="ml-2">
+                {
+                  user? 
+                  <div className="flex items-center space-x-2">
+                    <img
+                     className="w-10 h-10 rounded-full object-cover "
+                     src={avatar}
+                      alt="Rounded avatar"
+                  />
+                    <p>{user.displayName}</p>
+                  </div>
+                  :
+                  <p></p>
+                }
+              </div>
           </div>
           
         </div>

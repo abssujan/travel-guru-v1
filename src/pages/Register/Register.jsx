@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
+import { updateProfile } from "firebase/auth";
 
 const Register = () => {
   const SocialLoginButton = () => (
@@ -29,10 +30,18 @@ const Register = () => {
     const email = form.get('email');
     const password = form.get('password');
     console.log(firstName, lastName, email, password);
+    const fullName = `${firstName} ${lastName}`;
 
     createUser(email, password)
     .then(result => {
-        console.log(result.user)
+        const user = result.user;
+        //UPDATED user
+        updateProfile(user, {
+          displayName: fullName,
+        })
+        .then(() => {
+          console.log("Profile updated successfully:", user.displayName);
+        })
     })
     .catch(error => console.log(error))
 
@@ -49,7 +58,7 @@ const Register = () => {
             <input
               type="text"
               className="w-full bg-blue-50 dark:bg-transparent min-h-[48px] leading-10 px-4 p-2 rounded-lg outline-none border border-gray-300 focus:border-[#F9A51A]"
-              id="email"
+             
               name="first"
               required
               placeholder="Enter Your First Name"
@@ -62,7 +71,7 @@ const Register = () => {
             <input
               type="text"
               className="w-full bg-blue-50 dark:bg-transparent min-h-[48px] leading-10 px-4 p-2 rounded-lg outline-none border border-gray-300 focus:border-[#F9A51A]"
-              id="email"
+              
               name="last"
               required
               placeholder="Enter Your Last Name"
@@ -75,7 +84,7 @@ const Register = () => {
             <input
               type="email"
               className="w-full bg-blue-50 dark:bg-transparent min-h-[48px] leading-10 px-4 p-2 rounded-lg outline-none border border-gray-300 focus:border-[#F9A51A]"
-              id="email"
+              
               name="email"
               required
               placeholder="Enter Email Address"
@@ -100,7 +109,7 @@ const Register = () => {
             <input
               type="password"
               className="w-full bg-blue-50 dark:bg-transparent min-h-[48px] leading-10 px-4 p-2 rounded-lg outline-none border border-gray-300 focus:border-[#F9A51A]"
-              id="password"
+              
               name="confirm"
               placeholder="Enter Password"
             />

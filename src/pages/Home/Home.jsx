@@ -4,6 +4,7 @@ import sliderPic1 from '../../assets/sajekvallyfog.jpg';
 import sliderPic2 from '../../assets/Sreemongol.png';
 import sliderPic3 from '../../assets/sundarban1.jpg';
 import sliderPic4 from '../../assets/coxs bazar.jpg'; // 4th image
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -50,9 +51,11 @@ const Home = () => {
               headquarters in southeastern Bangladesh. It is famous mostly for
               its long natural sandy beach, and it ...
             </p>
+            <Link to='/destination'>
             <button className="mt-7 bg-[#F9A51A] font-medium px-6 py-2 rounded-md">
               Booking <span>→</span>
             </button>
+            </Link>
           </div>
           {/* carousel */}
           <div className="md:col-span-2">

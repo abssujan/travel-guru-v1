@@ -2,7 +2,7 @@ import { Fragment, useContext, useState } from "react";
 import NavBarBlack from "../NavBar/NavBarBlack";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faGoogle } from "@fortawesome/free-brands-svg-icons";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 
 const Login = () => {
@@ -24,8 +24,11 @@ const Login = () => {
       </button>
     </Fragment>
   );
-
-   const { SignIn} = useContext(AuthContext)
+  
+   const { SignIn} = useContext(AuthContext);
+   const location = useLocation();
+   console.log(location)
+   const navigate = useNavigate();
 
   const handleLoginData = e => {
     e.preventDefault();
@@ -36,6 +39,7 @@ const Login = () => {
     SignIn(email, password)
     .then(result => {
         console.log(result.user)
+       navigate(location?.state? location.state : '/')
     })
     .catch(error => console.log(error))
   }
