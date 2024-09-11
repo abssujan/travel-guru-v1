@@ -4,6 +4,7 @@ import sliderPic1 from '../../assets/sajekvallyfog.jpg';
 import sliderPic2 from '../../assets/Sreemongol.png';
 import sliderPic3 from '../../assets/sundarban1.jpg';
 import sliderPic4 from '../../assets/coxs bazar.jpg'; // 4th image
+import bgHome from '../../assets/bg-cover.png'; // 4th image
 import { Link } from "react-router-dom";
 
 const Home = () => {
@@ -40,7 +41,8 @@ const Home = () => {
   const cardGap = 10; // gap between cards
 
   return (
-    <div className="bg-hero-pattern bg-no-repeat h-full bg-cover bg-center">
+    <div style={{ backgroundImage: `url(${bgHome})` }}
+    className="  bg-no-repeat h-full bg-cover bg-center">
       <div className="max-w-[1400px] mx-auto">
         <NavBar />
         <div className="grid md:grid-cols-3 gap-5  items-center">

@@ -1,4 +1,4 @@
-import { Fragment, useContext, useState } from "react";
+import { Fragment, useContext } from "react";
 import NavBarBlack from "../NavBar/NavBarBlack";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faGoogle } from "@fortawesome/free-brands-svg-icons";
