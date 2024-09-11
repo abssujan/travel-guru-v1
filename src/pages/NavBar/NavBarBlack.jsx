@@ -179,7 +179,7 @@ const NavBarBlack = () => {
                     <p>{user.displayName || "User"}</p>
                   </div>
                 ) : (
-                  <div className=""></div>
+                  <div ></div>
                 )}
               </div>
             </div>
