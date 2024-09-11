@@ -1,8 +1,9 @@
-import { Fragment } from "react";
+import { Fragment, useContext, useState } from "react";
 import NavBarBlack from "../NavBar/NavBarBlack";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const Login = () => {
   const SocialLoginButton = () => (
@@ -23,19 +24,35 @@ const Login = () => {
       </button>
     </Fragment>
   );
+
+   const { SignIn} = useContext(AuthContext)
+
+  const handleLoginData = e => {
+    e.preventDefault();
+    const form = new FormData(e.currentTarget);
+    const email = form.get('email');
+    const password = form.get('password');
+    console.log(email, password)
+    SignIn(email, password)
+    .then(result => {
+        console.log(result.user)
+    })
+    .catch(error => console.log(error))
+  }
   return (
     <div>
       <NavBarBlack></NavBarBlack>
       <div className="w-[400px] mx-auto mt-20">
-        <form noValidate>
+        <form onSubmit={handleLoginData}>
           <div className="mb-4">
             <label className="block mb-2 font-normal" htmlFor="email">
               Email Address
             </label>
             <input
-              type="text"
+              type="email"
               className="w-full bg-blue-50 dark:bg-transparent min-h-[48px] leading-10 px-4 p-2 rounded-lg outline-none border border-gray-300 focus:border-[#F9A51A]"
-              id="email"
+              name="email"
+              required
               placeholder="Enter Email Address"
             />
           </div>
@@ -47,11 +64,13 @@ const Login = () => {
               type="password"
               className="w-full bg-blue-50 dark:bg-transparent min-h-[48px] leading-10 px-4 p-2 rounded-lg outline-none border border-gray-300 focus:border-[#F9A51A]"
               id="password"
+              name="password"
+              required
               placeholder="Enter Password"
             />
           </div>
           <div className="mb-4">
-            <input type="checkbox" className="mr-2" id="remember-me" checked />
+            <input type="checkbox"  className="mr-2" id="remember-me"  />
             <label className="font-normal" htmlFor="remember-me">
               Remember me
             </label>

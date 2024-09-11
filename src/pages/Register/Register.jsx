@@ -1,8 +1,9 @@
-import { Fragment } from "react";
+import { Fragment, useContext } from "react";
 import NavBarBlack from "../NavBar/NavBarBlack";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const Register = () => {
   const SocialLoginButton = () => (
@@ -17,11 +18,30 @@ const Register = () => {
       </button>
     </Fragment>
   );
+  
+  const {user, createUser} = useContext(AuthContext);
+
+  const handleRegisterData = e => {
+    e.preventDefault()
+    const form = new FormData(e.currentTarget);
+    const firstName = form.get('first');
+    const lastName = form.get('last');
+    const email = form.get('email');
+    const password = form.get('password');
+    console.log(firstName, lastName, email, password);
+
+    createUser(email, password)
+    .then(result => {
+        console.log(result.user)
+    })
+    .catch(error => console.log(error))
+
+  }
   return (
     <div>
       <NavBarBlack></NavBarBlack>
       <div className="w-[400px] mx-auto mt-20">
-        <form noValidate>
+        <form onSubmit={handleRegisterData}>
           <div className="mb-4">
             <label className="block mb-2 font-normal" htmlFor="email">
               First Name
@@ -30,6 +50,8 @@ const Register = () => {
               type="text"
               className="w-full bg-blue-50 dark:bg-transparent min-h-[48px] leading-10 px-4 p-2 rounded-lg outline-none border border-gray-300 focus:border-[#F9A51A]"
               id="email"
+              name="first"
+              required
               placeholder="Enter Your First Name"
             />
           </div>
@@ -41,6 +63,8 @@ const Register = () => {
               type="text"
               className="w-full bg-blue-50 dark:bg-transparent min-h-[48px] leading-10 px-4 p-2 rounded-lg outline-none border border-gray-300 focus:border-[#F9A51A]"
               id="email"
+              name="last"
+              required
               placeholder="Enter Your Last Name"
             />
           </div>
@@ -52,6 +76,8 @@ const Register = () => {
               type="email"
               className="w-full bg-blue-50 dark:bg-transparent min-h-[48px] leading-10 px-4 p-2 rounded-lg outline-none border border-gray-300 focus:border-[#F9A51A]"
               id="email"
+              name="email"
+              required
               placeholder="Enter Email Address"
             />
           </div>
@@ -63,6 +89,7 @@ const Register = () => {
               type="password"
               className="w-full bg-blue-50 dark:bg-transparent min-h-[48px] leading-10 px-4 p-2 rounded-lg outline-none border border-gray-300 focus:border-[#F9A51A]"
               id="password"
+              name="password"
               placeholder="Enter Password"
             />
           </div>
@@ -74,6 +101,7 @@ const Register = () => {
               type="password"
               className="w-full bg-blue-50 dark:bg-transparent min-h-[48px] leading-10 px-4 p-2 rounded-lg outline-none border border-gray-300 focus:border-[#F9A51A]"
               id="password"
+              name="confirm"
               placeholder="Enter Password"
             />
           </div>
